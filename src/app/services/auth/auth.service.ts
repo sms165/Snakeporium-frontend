@@ -1,6 +1,7 @@
+import { UserStorageService } from './../storage/user-storage.service';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const BASIC_URL = "http://localhost:8080/";
@@ -10,7 +11,9 @@ const BASIC_URL = "http://localhost:8080/";
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,  private userStorageService : UserStorageService) { }
+
+
 
   register(registerRequest: any): Observable<any> {
     const url = BASIC_URL + "register";
@@ -26,4 +29,33 @@ export class AuthService {
         })
       );
   }
+
+
+
+
+  login(email: string, password: string): any {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    const body = { email, password };
+    console.log(headers);
+
+    return this.http.post(BASIC_URL + 'authenticate', body, { headers, observe: 'response' }).pipe(
+      map((res) => {
+        console.log('Response:', res);
+        const token = res.headers.get('authorization')?.substring(7);
+        const user = res.body;
+        if (token && user) {
+          this.userStorageService.saveToken(token);
+          this.userStorageService.saveUser(user);
+          return true;
+        }
+        return false;
+      }),
+      catchError(error => {
+        console.error('Error:', error); // Log the error object
+        return throwError(error); // Re-throw the error to propagate it
+      })
+    );
+  }
+
+
 }
