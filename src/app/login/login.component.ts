@@ -24,7 +24,7 @@ export class LoginComponent {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: [null, [Validators.required, Validators.email]],
+      username: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required]],
     })
   }
@@ -34,10 +34,12 @@ export class LoginComponent {
   }
 
   onSubmit(): void{
-    const email = this.loginForm.get('email')!.value;
+    const username = this.loginForm.get('username')!.value;
     const password = this.loginForm.get('password')!.value;
 
-    this.authService.login(email, password).subscribe(
+
+
+    this.authService.login(username, password).subscribe(
       (res)=>{
         this.snackBar.open('Login successful', 'OK', { duration: 5000});
       },

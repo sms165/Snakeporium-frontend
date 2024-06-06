@@ -33,9 +33,9 @@ export class AuthService {
 
 
 
-  login(email: string, password: string): any {
+  login(username: string, password: string): any {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = { email, password };
+    const body = { username, password };
     console.log(headers);
 
     return this.http.post(BASIC_URL + 'authenticate', body, { headers, observe: 'response' }).pipe(
