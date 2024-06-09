@@ -13,14 +13,32 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   addCategory( categoryDto: any): Observable<any>{
-    return this.http.post(BASIC_URL + '/api/admin/category', categoryDto, {
+    return this.http.post(BASIC_URL + 'api/admin/category', categoryDto, {
       headers: this.createAuthorizationHeader(),
     })
 }
 
+addProduct( productDto: any): Observable<any>{
+  return this.http.post(BASIC_URL + 'api/admin/product', productDto, {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
+getAllCategories(): Observable<any>{
+  return this.http.get(BASIC_URL + 'api/admin', {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
+getAllProducts(): Observable<any>{
+  return this.http.get(BASIC_URL + 'api/admin/products', {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
 private createAuthorizationHeader(): HttpHeaders{
   return new HttpHeaders().set(
-    'Authorization', 'Bearer' + UserStorageService.getToken()
+    'Authorization', 'Bearer ' + UserStorageService.getToken()
   )
 }
 
