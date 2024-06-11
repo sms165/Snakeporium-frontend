@@ -36,6 +36,44 @@ getAllProducts(): Observable<any>{
   })
 }
 
+getAllProductsByName(name:any): Observable<any>{
+  return this.http.get(BASIC_URL + `api/admin/search/${name}`, {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
+deleteProduct( productId: any): Observable<any>{
+  return this.http.delete(BASIC_URL + `api/admin/product/${productId}`, {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
+addCoupon( couponDto: any): Observable<any>{
+  return this.http.post(BASIC_URL + 'api/admin/coupons', couponDto, {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
+getCoupon(): Observable<any>{
+  return this.http.get(BASIC_URL + 'api/admin/coupons', {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
+getPlacedOrders(): Observable<any>{
+  return this.http.get(BASIC_URL + 'api/admin/orders', {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
+changeOrderStatus(orderId: number, status:string): Observable<any>{
+  return this.http.get(BASIC_URL + `api/admin/orders/${orderId}/${status}`, {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
+
+
 private createAuthorizationHeader(): HttpHeaders{
   return new HttpHeaders().set(
     'Authorization', 'Bearer ' + UserStorageService.getToken()

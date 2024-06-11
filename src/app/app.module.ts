@@ -15,6 +15,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MatTable, MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -36,6 +37,9 @@ import { RegisterComponent } from './register/register.component';
     MatIconModule,
     MatSnackBarModule,
     HttpClientModule,
+    MatTableModule,
+    MatTable
+
   ],
   providers: [
     provideClientHydration(),
