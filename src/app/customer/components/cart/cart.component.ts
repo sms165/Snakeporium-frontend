@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CustomerService } from '../../service/customer.service';
+import { CustomerService } from '../../services/customer.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';

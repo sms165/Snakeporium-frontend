@@ -72,12 +72,30 @@ changeOrderStatus(orderId: number, status:string): Observable<any>{
   })
 }
 
+postFaq(productId: number, faqDto:any): Observable<any>{
+  return this.http.post(BASIC_URL + `api/admin/faq/${productId}`,faqDto, {
+    headers: this.createAuthorizationHeader(),
+  })
+}
 
+getProductById(productId): Observable<any>{
+  return this.http.get(BASIC_URL + `api/admin/product/${productId}`, {
+    headers: this.createAuthorizationHeader(),
+  })
+}
+
+updateProduct(productId: any, productDto: any): Observable<any>{
+  return this.http.put(BASIC_URL + `api/admin/product/${productId}`, productDto, {
+    headers: this.createAuthorizationHeader(),
+  })
+}
 
 private createAuthorizationHeader(): HttpHeaders{
   return new HttpHeaders().set(
     'Authorization', 'Bearer ' + UserStorageService.getToken()
   )
 }
+
+
 
 }

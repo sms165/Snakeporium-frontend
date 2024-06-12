@@ -62,6 +62,10 @@
   </mat-header-cell>
   <mat-cell *matCellDef="let myOrder">
     <!-- Action buttons or links go here -->
+<span *ngIf="myOrder.orderStatus == 'Delivered'">
+  <button mat-raised-button color="primary" type="submit" [routerLink]="['/customer/ordered_products', myOrder.id]">Review</button>
+</span>
+
   </mat-cell>
 </ng-container>
 

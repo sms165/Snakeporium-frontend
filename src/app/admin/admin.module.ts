@@ -13,6 +13,8 @@ import { PostCouponComponent } from './components/post-coupon/post-coupon.compon
 import { CouponComponent } from './components/coupon/coupon.component';
 import { MatTableModule } from '@angular/material/table';
 import { OrdersComponent } from './components/orders/orders.component';
+import { PostProductFaqComponent } from './components/post-product-faq/post-product-faq.component';
+import { UpdateProductComponent } from './components/update-product/update-product.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { OrdersComponent } from './components/orders/orders.component';
     PostProductComponent,
     PostCouponComponent,
     CouponComponent,
-    OrdersComponent
+    OrdersComponent,
+    PostProductFaqComponent,
+    UpdateProductComponent
   ],
   imports: [
     CommonModule,

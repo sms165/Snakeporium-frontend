@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CustomerService } from '../../service/customer.service';
+// import { CustomerService } from '../../service/customer.service';
 import { Router } from '@angular/router';
+import { CustomerService } from '../../services/customer.service';
 
 @Component({
   selector: 'app-place-order',
@@ -39,7 +40,7 @@ private router: Router,
         this.snackBar.open("Order Placed Successfully", 'Close', {
           duration: 5000
         })
-        this.router.navigateByUrl("/customer/my-orders");
+        this.router.navigateByUrl("/customer/orders");
         this.closeForm();
       }else{
         this.snackBar.open("Something went wrong", 'Close', {
