@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from '../../services/storage/user-storage.service';
@@ -10,7 +10,9 @@ const BASIC_URL = "http://localhost:8080/";
 })
 export class CustomerService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+
+  ) { }
 
   getAllProducts(): Observable<any>{
     return this.http.get(BASIC_URL + 'api/customer/products', {
@@ -98,6 +100,43 @@ export class CustomerService {
     })
   }
 
+  getProductDetailById(productId: number): Observable<any>{
+    return this.http.get(BASIC_URL + `api/customer/product/${productId}`, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  addProductToWishlist(wishlistDto:any): Observable<any>{
+    return this.http.post(BASIC_URL + `api/customer/wishlist`, wishlistDto, {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  getWishlistByUserId(): Observable<any>{
+    const userId = UserStorageService.getUserId();
+    return this.http.get(BASIC_URL + `api/customer/wishlist/${userId}`,  {
+      headers: this.createAuthorizationHeader(),
+    })
+  }
+
+  getProfileById(): Observable<any> {
+    const userId = UserStorageService.getUserId(); // Assume this retrieves the userId correctly from local storage
+    const token = UserStorageService.getToken(); // Retrieve the JWT token from local storage
+    console.log("User ID from storage: ", userId); // Log the user ID for debugging
+    console.log("JWT Token: ", token);
+
+    return this.http.get(BASIC_URL + `api/customer/profile?userId=${userId}`,  {
+      headers: this.createAuthorizationHeader(),
+    });
+
+  }
+
+  updateProfile(userId: number, updatedProfile: any): Observable<any> {
+    console.log('Updating profile. userId:', userId, 'updatedProfile:', updatedProfile);
+    return this.http.put(BASIC_URL + `api/customer/profile?userId=${userId}`, updatedProfile, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
 
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(

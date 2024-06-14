@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 // import { CustomerService } from '../../service/customer.service';
 import { Router } from '@angular/router';
-import { CustomerService } from '../../services/customer.service';
+import { CustomerService } from '../../service/customer.service';
 
 @Component({
   selector: 'app-place-order',

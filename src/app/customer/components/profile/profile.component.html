@@ -1,0 +1,25 @@
+<mat-card *ngIf="userProfile">
+  <mat-card-header>
+    <mat-card-title>{{ userProfile.firstName }} {{ userProfile.lastName }}</mat-card-title>
+    <mat-card-subtitle>{{ userProfile.email }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>ID:</strong> {{ userProfile.id }}</p>
+    <p><strong>Email:</strong> {{ userProfile.email }}</p>
+    <p><strong>First Name:</strong> {{ userProfile.firstName }}</p>
+    <p><strong>Last Name:</strong> {{ userProfile.lastName }}</p>
+
+    <p><strong>City:</strong> {{ userProfile.city || 'N/A' }}</p>
+    <p><strong>State:</strong> {{ userProfile.state || 'N/A' }}</p>
+    <p><strong>Street:</strong> {{ userProfile.street || 'N/A' }}</p>
+    <p><strong>Street Number:</strong> {{ userProfile.streetNumber || 'N/A' }}</p>
+    <p><strong>ZIP:</strong> {{ userProfile.zip || 'N/A' }}</p>
+    <p><strong>Phone:</strong> {{ userProfile.phone || 'N/A' }}</p>
+  </mat-card-content>
+
+   <!-- Button to update profile -->
+   <mat-card-actions>
+    <button mat-button color="primary" (click)="updateProfile()">Update Profile</button>
+  </mat-card-actions>
+
+</mat-card>

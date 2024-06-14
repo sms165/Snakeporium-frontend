@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserStorageService } from '../../../services/storage/user-storage.service';
-import { CustomerService } from '../../services/customer.service';
+import { CustomerService } from '../../service/customer.service';
 
 @Component({
   selector: 'app-review-ordered-product',
@@ -57,6 +57,11 @@ private activatedRoute: ActivatedRoute,
     const formData: FormData = new FormData();
     if (this.selectedFile) {
         formData.append('img', this.selectedFile);
+
+        const mimeType = this.selectedFile.type; // e.g., "image/jpeg"
+        const imageFormat = mimeType.split('/')[1]; // e.g., "jpeg"
+
+        formData.append('imageFormat', imageFormat);
     }
     formData.append('productId', this.productId.toString());
     formData.append('userId', UserStorageService.getUserId().toString());

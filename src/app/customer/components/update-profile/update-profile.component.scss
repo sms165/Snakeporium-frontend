@@ -1,0 +1,13 @@
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-field {
+  width: calc(50% - 20px); /* Adjust width as needed */
+}
+
+.form-field p {
+  margin-bottom: 5px; /* Adjust spacing between label and input */
+}

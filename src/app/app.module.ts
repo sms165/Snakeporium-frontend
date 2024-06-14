@@ -16,6 +16,7 @@ import { DemoAngularMaterialModule } from './DemoAngularMaterialModule';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MatTable, MatTableModule } from '@angular/material/table';
+import { TrackOrderComponent } from './track-order/track-order.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MatTable, MatTableModule } from '@angular/material/table';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    TrackOrderComponent,
   ],
   imports: [
     BrowserModule,

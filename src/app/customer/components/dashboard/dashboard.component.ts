@@ -2,7 +2,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from './../../../admin/service/admin.service';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CustomerService } from '../../services/customer.service';
+import { CustomerService } from '../../service/customer.service';
 
 @Component({
   selector: 'app-dashboard',
