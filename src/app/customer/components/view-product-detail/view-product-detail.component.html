@@ -6,6 +6,13 @@
     </div>
     <div class="product-details">
       <h2>{{ product.name }}</h2>
+    <!-- Random Questions Section -->
+<h1 class="section-heading" *ngIf="randomQuestions.length > 0">Random Questions</h1>
+<div *ngIf="randomQuestions.length > 0" class="random-questions center-container">
+  <ul>
+    <li *ngFor="let question of randomQuestions">{{ question }}</li>
+  </ul>
+</div>
       <p class="description">{{ product.description }}</p>
       <p class="price">Price: ${{ product.price }}</p>
       <p class="category">Category: {{ product.categoryName }}</p>

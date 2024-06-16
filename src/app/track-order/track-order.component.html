@@ -1,4 +1,7 @@
-<form [formGroup]="searchOrderForm" class="search-form" (submit)="submitForm()">
+<div class="container-track">
+  <mat-card class="track-card">
+    <mat-card-title>Track Order</mat-card-title>
+<form  [formGroup]="searchOrderForm" class="form" (submit)="submitForm()">
   <mat-form-field appearance="outline" class="search-input">
     <mat-label>Enter Tracking Id to search</mat-label>
     <input matInput formControlName="trackingId">
@@ -7,15 +10,16 @@
     </button>
   </mat-form-field>
 </form>
-
+</mat-card>
 <div class="order-details-container" *ngIf="order">
 
-  <mat-card>
+  <mat-card class="track-card">
     <mat-card-header>
       <mat-card-title>Order Details</mat-card-title>
     </mat-card-header>
-    <div class="order-detail">
-      Tracking ID:
+    <div class="order-detail-tr">
+      Tracking ID:</div>
+      <div class="order-detail-tr">
       <strong>{{ order.trackingId }}</strong>
     </div>
     <div class="order-detail">
@@ -41,3 +45,4 @@
 </mat-card>
 </div>
 
+</div>

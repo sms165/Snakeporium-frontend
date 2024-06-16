@@ -18,6 +18,9 @@ export class ViewProductDetailComponent {
   product: any;
   FAQs: any[] = [];
   reviews: any[] = [];
+  randomQuestions: string[] = [];
+  chatMessages: { content: string; type: 'user' | 'bot' }[] = [];
+  newMessage: string = '';
 
 
   constructor(
@@ -96,5 +99,27 @@ console.log(this.product.processedImg)
       );
   }
 
+  sendMessage(): void {
+    if (this.newMessage.trim() === '') return;
 
+    this.chatMessages.push({ content: this.newMessage.trim(), type: 'user' });
+
+    // Send user message to backend for processing (if needed)
+
+    this.newMessage = ''; // Clear the input field
+  }
+
+  askRandomQuestions(): void {
+    this.customerService.getRandomQuestionsWithProductDetails(this.productId).subscribe(
+      (questions) => {
+        this.randomQuestions = questions;
+      },
+      (error) => {
+        console.error('Error fetching random questions:', error);
+      }
+    );
+  }
 }
+
+
+

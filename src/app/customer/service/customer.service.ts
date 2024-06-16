@@ -74,6 +74,13 @@ export class CustomerService {
     })
   }
 
+  removeItemFromCart(userId: number, productId: number): Observable<any> {
+
+    return this.http.delete<any>(BASIC_URL + `api/customer/cart/${userId}/${productId}`, {
+    headers: this.createAuthorizationHeader()});
+
+  }
+
   placeOrder(orderDto:any): Observable<any>{
     orderDto.userId = UserStorageService.getUserId()
     return this.http.post(BASIC_URL + `api/customer/placeOrder`, orderDto,  {
@@ -137,6 +144,22 @@ export class CustomerService {
       headers: this.createAuthorizationHeader()
     });
   }
+
+  updatePassword(userId: number, updatedProfile: any): Observable<any> {
+    console.log('Updating profile. userId:', userId, 'updatedProfile:', updatedProfile);
+    return this.http.put(BASIC_URL + `api/customer/profile/password?userId=${userId}`, updatedProfile, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+  getRandomQuestionsWithProductDetails(productId: number): Observable<any> {
+    return this.http.get(BASIC_URL + `/random-questions/${productId}`, {
+      headers: this.createAuthorizationHeader()
+    });
+  }
+
+
+
 
   private createAuthorizationHeader(): HttpHeaders{
     return new HttpHeaders().set(

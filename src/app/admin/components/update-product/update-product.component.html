@@ -40,6 +40,22 @@
     </mat-form-field>
 
     <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Latin Name</mat-label>
+      <input matInput type="text" placeholder="Latin Name" formControlName="latin" />
+      <mat-error *ngIf="productForm.get('latin')?.hasError('required')">Please add latin name.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
+    <mat-label>Select a Sex</mat-label>
+      <mat-select formControlName="sexId" name="sexId">
+          <mat-option *ngFor="let sex of listOfSexes" [value]="sex.id">
+          {{sex.name}}
+          </mat-option>
+      </mat-select>
+      <mat-error *ngIf="productForm.get('sexId')?.hasError('required')">Please choose a sex.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="outline">
       <mat-label>Price</mat-label>
       <input matInput type="number" placeholder="Price" formControlName="price" />
       <mat-error *ngIf="productForm.get('price')?.hasError('required')">Please add a price.</mat-error>

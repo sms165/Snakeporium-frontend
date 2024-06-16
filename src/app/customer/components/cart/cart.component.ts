@@ -74,6 +74,17 @@ public dialog: MatDialog) {
 
   }
 
+  removeItemFromCart(userId: any, productId: any): void {
+    console.log(userId);
+    console.log(productId);
+    this.customerService.removeItemFromCart(userId, productId).subscribe(
+      res => {
+        this.snackBar.open("Item removed from cart", 'Close', { duration: 5000 });
+        this.getCart();
+      },
+    );
+  }
+
   placeOrder(){
     this.dialog.open(PlaceOrderComponent);
   }

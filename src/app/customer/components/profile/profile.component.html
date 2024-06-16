@@ -1,5 +1,5 @@
-<mat-card *ngIf="userProfile">
-  <mat-card-header>
+<mat-card class="mat-card" *ngIf="userProfile">
+  <mat-card-header class="mat-card-header">
     <mat-card-title>{{ userProfile.firstName }} {{ userProfile.lastName }}</mat-card-title>
     <mat-card-subtitle>{{ userProfile.email }}</mat-card-subtitle>
   </mat-card-header>
@@ -19,7 +19,8 @@
 
    <!-- Button to update profile -->
    <mat-card-actions>
-    <button mat-button color="primary" (click)="updateProfile()">Update Profile</button>
+    <button mat-raised-button class="cartBtn" (click)="updateProfile()">Update Profile</button>
+    <button mat-raised-button  (click)="updatePassword()">Change Password</button>
   </mat-card-actions>
 
 </mat-card>

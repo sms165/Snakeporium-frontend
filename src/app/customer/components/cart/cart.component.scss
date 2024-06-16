@@ -1,0 +1,142 @@
+.cart-container {
+  background:
+  linear-gradient(145deg, rgba(193, 170, 164, 0.8), rgba(95, 72, 58, 0.8)), /* Base gradient with 80% opacity */
+  linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)); /* Shiny effect with 30% opacity fading to transparent */
+  border-radius: 15px; /* Rounded corners */
+  margin: 5vw;
+  padding: 5vw;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.cart-item {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.product-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.product-image {
+  width: 30vw;
+  margin-right: 10vw;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-details {
+  flex: 1;
+}
+
+.item-row {
+  margin-bottom: 8px;
+}
+
+.item-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.highlight {
+  color: #ff5722; /* Orange color for highlighted items */
+}
+
+.item-price {
+  font-size: 16px;
+  color: #555;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.quantity-controls button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.quantity {
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+.total-price {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.container-coupon{
+  background:
+  linear-gradient(145deg, rgba(193, 170, 164, 0.8), rgba(95, 72, 58, 0.8)), /* Base gradient with 80% opacity */
+  linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)); /* Shiny effect with 30% opacity fading to transparent */
+  border-radius: 15px; /* Rounded corners */
+  margin: 5vw;
+  padding: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.empty-cart {
+  background:
+  linear-gradient(145deg, rgba(193, 170, 164, 0.8), rgba(95, 72, 58, 0.8)), /* Base gradient with 80% opacity */
+  linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0)); /* Shiny effect with 30% opacity fading to transparent */
+  border-radius: 15px; /* Rounded corners */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40%;
+  padding: 40px;
+  color: #000000;
+  text-align: center;
+
+  /* Ensure it's centered vertically on the page */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.empty-cart .icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.cartBtn{
+  background-color: #000;
+  color: #fff;
+
+
+}
+
+.form-field{
+  margin-right: 3vw;
+}
+
+.pEmpty{
+  margin-left: 3vw;
+}

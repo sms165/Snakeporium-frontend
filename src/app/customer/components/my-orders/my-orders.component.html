@@ -1,9 +1,10 @@
+<div class="container-my-orders">
 <ng-container >
   <mat-table #basicTable [dataSource]="myOrders" class="mat-elevation-z8">
 
 
 <ng-container matColumnDef="trackingId">
-  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">
+  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #000000;">
     Tracking ID
   </mat-header-cell>
   <mat-cell *matCellDef="let myOrder">
@@ -12,7 +13,7 @@
 </ng-container>
 
 <ng-container matColumnDef="amount">
-  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">
+  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #000000;">
     Amount
   </mat-header-cell>
   <mat-cell *matCellDef="let myOrder" style="font-weight: 600;">
@@ -21,7 +22,7 @@
 </ng-container>
 
 <ng-container matColumnDef="description">
-  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">
+  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #000000;">
     Description
   </mat-header-cell>
   <mat-cell *matCellDef="let myOrder">
@@ -30,7 +31,7 @@
 </ng-container>
 
 <ng-container matColumnDef="address">
-  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">
+  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #000000;">
     Address
   </mat-header-cell>
   <mat-cell *matCellDef="let myOrder">
@@ -39,7 +40,7 @@
 </ng-container>
 
 <ng-container matColumnDef="date">
-  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">
+  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #000000;">
     Date
   </mat-header-cell>
   <mat-cell *matCellDef="let myOrder">
@@ -48,7 +49,7 @@
 </ng-container>
 
 <ng-container matColumnDef="status">
-  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">
+  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #000000;">
     Status
   </mat-header-cell>
   <mat-cell *matCellDef="let myOrder">
@@ -57,7 +58,7 @@
 </ng-container>
 
 <ng-container matColumnDef="action">
-  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #003973;">
+  <mat-header-cell *matHeaderCellDef style="font-weight: bolder; color: #000000;">
     Action
   </mat-header-cell>
   <mat-cell *matCellDef="let myOrder">
@@ -74,3 +75,4 @@
 
 </mat-table>
 </ng-container>
+</div>

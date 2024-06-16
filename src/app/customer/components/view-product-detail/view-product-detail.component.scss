@@ -1,0 +1,115 @@
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  background-color: transparent;
+}
+
+.product-card {
+  width: 80%;
+margin-top: 5vh;
+  background:
+    linear-gradient(145deg, rgba(193, 170, 164, 0.8), rgba(95, 72, 58, 0.8)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  border-radius: 15px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2),
+              inset 0 0 20px rgba(0, 0, 0, 0.1),
+              0 4px 8px rgba(0, 0, 0, 0.1),
+              0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+
+
+}
+
+
+
+
+.product-image {
+  height: 40vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.product-details {
+  padding: 1rem;
+}
+
+.product-details h2 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.product-details .description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.product-details .price {
+  font-weight: bold;
+}
+
+.product-details .category {
+  color: #aaa;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #000000;
+}
+
+.review-list, .faq-list {
+  margin-top: 1rem;
+}
+
+.review-card, .faq-card {
+  background: #f3f3f3;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-card .details-row, .faq-card .faq-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-card .rating {
+  font-weight: bold;
+}
+
+.review-card .username {
+  color: #666;
+}
+
+.faq-card .question, .faq-card .answer {
+  font-weight: bold;
+}
+
+.faq-card .answer {
+  color: #666;
+}
+
+/* Link Hover Effect */
+.link-text:hover {
+  color: red;
+}

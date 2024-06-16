@@ -1,0 +1,36 @@
+
+
+.register-card {
+  margin-top: 15vh;
+  width: 30%;
+  max-width: 20vw; /* Maximum width of the card */
+  padding: 1vw; /* Inner padding for the card */
+  border-radius: 10px; /* Rounded corners */
+  background-color: rgba(255, 255, 255, 0.3); /* White background with transparency */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), /* Soft shadow */
+              0 6px 20px rgba(0, 0, 0, 0.1); /* Larger shadow for a 3D effect */
+  backdrop-filter: blur(10px);
+}
+
+.register-card, .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 15px; /* Adjust spacing between form fields */
+}
+
+.mat-error {
+  margin-top: 5px; /* Adjust spacing between error message and input */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .register-card {
+    max-width: 90%; /* Adjust for smaller screens */
+  }
+}

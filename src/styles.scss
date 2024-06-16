@@ -3,3 +3,41 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  background-image: url('assets/images/snakeskin.jpg'); /* Path to your image */
+  background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+  background-attachment: fixed; /* Fix the background image */
+  height: 100%; /* Ensure the body covers the full height */
+  margin: 0; /* Remove default margin */
+
+
+}
+
+.container-login,
+.container-register {
+  display: flex;
+  justify-content: center; /* Center the login card horizontally */
+  align-items: center; /* Center the login card vertically */
+  height: 100vh; /* Full viewport height */
+  background-image: url('assets/images/snake-mouth.png'); /* Path to your image */
+  background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+  padding: 20px; /* Padding for spacing */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.container-track {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the login card horizontally */
+  align-items: center; /* Center the login card vertically */
+  height: 100vh; /* Full viewport height */
+  background-image:url('assets/images/snake-mouth.png'); /* Path to your image */
+  background-size: cover; /* Adjust as needed */
+  background-position: center; /* Adjust as needed */
+  // background-color: #0d47a1; /* Blue background color */
+  padding: 20px; /* Padding for spacing */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+

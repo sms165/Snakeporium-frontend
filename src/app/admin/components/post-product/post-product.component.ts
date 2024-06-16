@@ -12,6 +12,7 @@ import { AdminService } from '../../service/admin.service';
 export class PostProductComponent {
   productForm!: FormGroup;
   listOfCategories: any =[];
+  listOfSexes: any =[];
   selectedFile: File | null;
   imagePreview: string | ArrayBuffer | null;
 
@@ -32,7 +33,7 @@ export class PostProductComponent {
       this.selectedFile = file;
       this.previewImage();
     } else {
-      // Display an error message to the user
+      this.snackBar.open('The file cannot be added', 'Close', { duration: 5000 });// Display an error message to the user
       console.error('Unsupported file format');
       // Optionally, reset the file input to clear the selection
       event.target.value = null;
@@ -56,16 +57,27 @@ export class PostProductComponent {
       categoryId: [null, [Validators.required]],
       name: [null, [Validators.required]],
       price: [null, [Validators.required]],
-      description: [null, [Validators.required]],
+      description: [null],
+      sexId: [null, [Validators.required]],
+      // species: [null, [Validators.required]],
+      latin: [null, [Validators.required]],
     })
 
     this.getAllCategories();
+    this.getAllSexes();
   }
 
   getAllCategories(){
     this.adminService.getAllCategories().subscribe(res=>{
       this.listOfCategories = res;
       console.log('Categories:', this.listOfCategories);
+  })
+  }
+
+  getAllSexes(){
+    this.adminService.getAllSexes().subscribe(res=>{
+      this.listOfSexes = res;
+      console.log('Sexes:', this.listOfSexes);
   })
   }
 
@@ -79,10 +91,20 @@ export class PostProductComponent {
 
       formData.append('imageFormat', fileExtension);
 
+      formData.append('sexId', this.productForm.get('sexId').value);
       formData.append('categoryId', this.productForm.get('categoryId').value);
       formData.append('name', this.productForm.get('name').value);
       formData.append('description', this.productForm.get('description').value);
       formData.append('price', this.productForm.get('price').value);
+      // formData.append('species', this.productForm.get('species').value);
+      formData.append('latin', this.productForm.get('latin').value);
+
+ // Log formData keys and values for verification
+ console.log('Form Data Entries:');
+ formData.forEach((value, key) => {
+   console.log(`${key}: ${value}`);
+ });
+
 
       this.adminService.addProduct(formData).subscribe((res) => {
         if (res.id != null) {

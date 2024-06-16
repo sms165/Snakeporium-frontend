@@ -17,6 +17,7 @@ export class UpdateProductComponent {
 
   productForm!: FormGroup;
   listOfCategories: any =[];
+  listOfSexes: any =[];
   selectedFile: File | null;
   imagePreview: string | ArrayBuffer | null;
   existingImage: string | null = null;
@@ -54,11 +55,13 @@ export class UpdateProductComponent {
   ngOnInit():void{
     this.productForm = this.fb.group({
       categoryId: [null, [Validators.required]],
+      sexId: [null, [Validators.required]],
+      latin: [null, [Validators.required]],
       name: [null, [Validators.required]],
       price: [null, [Validators.required]],
       description: [null, [Validators.required]],
     })
-
+this.getAllSexes();
     this.getAllCategories();
     this.getProductById();
   }
@@ -77,6 +80,13 @@ export class UpdateProductComponent {
     this.adminService.getAllCategories().subscribe(res=>{
       this.listOfCategories = res;
       console.log('Categories:', this.listOfCategories);
+  })
+  }
+
+  getAllSexes(){
+    this.adminService.getAllSexes().subscribe(res=>{
+      this.listOfSexes = res;
+      console.log('Sexes:', this.listOfSexes);
   })
   }
 
@@ -101,11 +111,17 @@ export class UpdateProductComponent {
     }
 
     // Append only modified form data
-    // if (this.productForm.get('categoryId').dirty) {
-    //   formData.append('categoryId', this.productForm.get('categoryId').value);
-    // }
+    if (this.productForm.get('categoryId').dirty) {
+      formData.append('categoryId', this.productForm.get('categoryId').value);
+    }
+    if (this.productForm.get('sexId').dirty) {
+      formData.append('sexId', this.productForm.get('sexId').value);
+    }
     if (this.productForm.get('name').dirty) {
       formData.append('name', this.productForm.get('name').value);
+    }
+    if (this.productForm.get('latin').dirty) {
+      formData.append('latin', this.productForm.get('latin').value);
     }
     if (this.productForm.get('description').dirty) {
       formData.append('description', this.productForm.get('description').value);
