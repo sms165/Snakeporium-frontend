@@ -18,6 +18,7 @@ import { UpdateProductComponent } from './components/update-product/update-produ
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { OrderByStatusComponent } from './components/analytics/order-by-status/order-by-status.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { OrderDialogComponent } from './components/order-dialog/order-dialog.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     UpdateProductComponent,
     AnalyticsComponent,
     OrderByStatusComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    OrderDialogComponent
   ],
   imports: [
     CommonModule,

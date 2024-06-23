@@ -27,7 +27,7 @@ export class ViewWishlistComponent {
         res.forEach(element => {
           element.processedImg = 'data:image/' + element.imageFormat + ';base64,' + element.returnedImg;
           this.products.push(element);
-
+          console.log(element)
         });
       })
     }

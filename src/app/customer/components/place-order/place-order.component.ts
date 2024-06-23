@@ -1,59 +1,71 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-// import { CustomerService } from '../../service/customer.service';
 import { Router } from '@angular/router';
 import { CustomerService } from '../../service/customer.service';
 
 @Component({
   selector: 'app-place-order',
   templateUrl: './place-order.component.html',
-  styleUrl: './place-order.component.scss'
+  styleUrls: ['./place-order.component.scss']
 })
 export class PlaceOrderComponent {
-  orderForm!: FormGroup;
+  orderForm: FormGroup;
 
   constructor(
     private customerService: CustomerService,
     private fb: FormBuilder,
-  private snackBar: MatSnackBar,
-public dialog: MatDialog,
-private router: Router,
-
-) {
-
-  }
-
-  ngOnInit(): void{
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    private router: Router,
+  ) {
     this.orderForm = this.fb.group({
-      address: [null, [Validators.required]],
-      orderDescription: [null]
-    })
-
+      city: [null],
+      state: [null],
+      street: [null],
+      streetNumber: [null],
+      zip: [null],
+      phone: [null],
+      orderDescription: [null],
+    });
   }
 
-  placeOrder(){
-    this.customerService.placeOrder(this.orderForm.value).subscribe(res =>{
-      if(res.id != null){
-        console.log(res.id);
-        this.snackBar.open("Order Placed Successfully", 'Close', {
-          duration: 5000
-        })
-        this.router.navigateByUrl("/customer/orders");
-        this.closeForm();
-      }else{
-        this.snackBar.open("Something went wrong", 'Close', {
-          duration: 5000
+  ngOnInit(): void {
+    this.customerService.getProfileById().subscribe(profile => {
+      if (profile) {
+        this.orderForm.patchValue({
+          city: profile.city,
+          state: profile.state,
+          street: profile.street,
+          streetNumber: profile.streetNumber,
+          zip: profile.zip,
+          phone: profile.phone
         });
       }
-    })
+    });
   }
 
-  closeForm(){
-    this.dialog.closeAll()
+  placeOrder(): void {
+    this.customerService.placeOrder(this.orderForm.value).subscribe(
+      res => {
+        if (res.id != null) {
+          this.snackBar.open("Order Placed Successfully", 'Close', { duration: 5000 });
+          this.router.navigateByUrl("/customer/orders");
+          this.closeForm(); // Close the dialog if necessary
+        } else {
+          this.snackBar.open("Something went wrong", 'Close', { duration: 5000 });
+        }
+      },
+      error => {
+        console.error("Error placing order:", error);
+        this.snackBar.open("Something went wrong", 'Close', { duration: 5000 });
+      }
+    );
   }
 
-
+  closeForm(): void {
+    // Close the dialog or handle any necessary cleanup
+    this.dialog.closeAll(); // Close all open dialogs
+  }
 }
-

@@ -1,4 +1,5 @@
-<div class="container">
+<div class="addProd">
+<div class="container-product">
   <h2>Add Product</h2>
   <form [formGroup]="productForm" (ngSubmit)="addProduct()">
 
@@ -16,7 +17,7 @@
 </div>
 
     </div>
-
+<br />
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>Select a Category</mat-label>
       <mat-select formControlName="categoryId" name="categoryId">
@@ -26,7 +27,7 @@
       </mat-select>
       <mat-error *ngIf="productForm.get('categoryId')?.hasError('required')">Please choose a category.</mat-error>
     </mat-form-field>
-
+    <br />
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>Name</mat-label>
       <input matInput type="text" placeholder="Name" formControlName="name" />
@@ -38,13 +39,13 @@
       <input matInput placeholder="Species" formControlName="species">
 
     </mat-form-field> -->
-
+    <br />
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>Latin Name</mat-label>
       <input matInput placeholder="Latin Name" formControlName="latin">
 
     </mat-form-field>
-
+    <br />
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>Select a Sex</mat-label>
       <mat-select formControlName="sexId" name="sexId">
@@ -54,21 +55,22 @@
       </mat-select>
       <mat-error *ngIf="productForm.get('categoryId')?.hasError('required')">Please choose a category.</mat-error>
     </mat-form-field>
-
+    <br />
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>Price</mat-label>
       <input matInput type="number" placeholder="Price" formControlName="price" />
       <mat-error *ngIf="productForm.get('price')?.hasError('required')">Please add a price.</mat-error>
     </mat-form-field>
-
+    <br />
     <mat-form-field class="form-field" appearance="outline">
       <mat-label>Description</mat-label>
       <textarea matInput placeholder="Description" formControlName="description"></textarea>
       <mat-error *ngIf="productForm.get('description')?.hasError('required')">Please add a description.</mat-error>
     </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit">Add Product</button>
+    <br />
+    <button mat-raised-button class="post-button" color="primary" type="submit">Add Product</button>
 
 
   </form>
+</div>
 </div>

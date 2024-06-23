@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderDialogComponent } from '../order-dialog/order-dialog.component';
 
 @Component({
   selector: 'app-orders',
@@ -14,6 +16,7 @@ export class OrdersComponent {
   constructor(
     private adminService: AdminService,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ){
   }
 
@@ -26,6 +29,18 @@ export class OrdersComponent {
       this.orders = res;
     })
   }
+
+  openDialog(order: any): void {
+    const dialogRef = this.dialog.open(OrderDialogComponent, {
+      width: '400px',
+      data: { street: order.street, state: order.state },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 
   changeOrderStatus(orderId: number, status: string){
     this.adminService.changeOrderStatus(orderId,status).subscribe(res =>{

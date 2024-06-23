@@ -19,13 +19,15 @@
         </ng-container>
 
         <ng-container matColumnDef="description">
-          <th mat-header-cell *matHeaderCellDef>Description</th>
+          <th mat-header-cell *matHeaderCellDef>Special Requests</th>
           <td mat-cell *matCellDef="let order">{{ order.orderDescription }}</td>
         </ng-container>
 
+
+
         <ng-container matColumnDef="address">
-          <th mat-header-cell *matHeaderCellDef>Address</th>
-          <td mat-cell *matCellDef="let order">{{ order.address }}</td>
+          <th mat-header-cell *matHeaderCellDef>Full Address</th>
+          <td mat-cell *matCellDef="let order"> <button mat-button (click)="openDialog(order)">View Details</button></td>
         </ng-container>
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef>Date</th>
