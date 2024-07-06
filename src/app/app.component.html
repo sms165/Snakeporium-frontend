@@ -1,37 +1,89 @@
 <div *ngIf="!isCustomerLoggedIn && !isAdminLoggedIn">
-<mat-toolbar color="primary" class="navbar">
-  <span class="navbar-brand">Snakeporium</span>
-  <span class="spacer"></span>
-  <button mat-button routerLink="/order" routerLinkActive="active">Track Order</button>
-  <button mat-button routerLink="/register" routerLinkActive="active">Register</button>
-  <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
-</mat-toolbar>
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Snakeporium</span>
+    <span class="spacer"></span>
+    <!-- Regular Menu for Larger Screens -->
+    <ng-container *ngIf="!isSmallScreen">
+      <button mat-button routerLink="/order" routerLinkActive="active">Track Order</button>
+      <button mat-button routerLink="/register" routerLinkActive="active">Register</button>
+      <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+    </ng-container>
+    <!-- Hamburger Menu for Smaller Screens -->
+    <ng-container *ngIf="isSmallScreen">
+      <button mat-icon-button [matMenuTriggerFor]="menuGuest">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menuGuest="matMenu">
+        <button mat-menu-item routerLink="/order" routerLinkActive="active">Track Order</button>
+        <button mat-menu-item routerLink="/register" routerLinkActive="active">Register</button>
+        <button mat-menu-item routerLink="/login" routerLinkActive="active">Login</button>
+      </mat-menu>
+    </ng-container>
+  </mat-toolbar>
 </div>
+
 <div *ngIf="isAdminLoggedIn">
   <mat-toolbar color="primary" class="navbar">
     <span class="navbar-brand">Snakeporium</span>
     <span class="spacer"></span>
-    <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</button>
-    <button mat-button routerLink="/admin/analytics" routerLinkActive="active">Analytics</button>
-    <button mat-button routerLink="/admin/category" routerLinkActive="active">Category</button>
-    <button mat-button routerLink="/admin/product" routerLinkActive="active">Product</button>
-    <button mat-button routerLink="/admin/orders" routerLinkActive="active">Orders</button>
-    <button mat-button routerLink="/admin/coupons" routerLinkActive="active">Coupons</button>
-    <button mat-button routerLink="/admin/post-coupon" routerLinkActive="active">Add Coupon</button>
-    <button mat-button  routerLinkActive="active" (click)="logout()">Logout</button>
+    <!-- Regular Menu for Larger Screens -->
+    <ng-container *ngIf="!isSmallScreen">
+      <button mat-button routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</button>
+      <button mat-button routerLink="/admin/analytics" routerLinkActive="active">Analytics</button>
+      <button mat-button routerLink="/admin/category" routerLinkActive="active">Category</button>
+      <button mat-button routerLink="/admin/product" routerLinkActive="active">Product</button>
+      <button mat-button routerLink="/admin/orders" routerLinkActive="active">Orders</button>
+      <button mat-button routerLink="/admin/coupons" routerLinkActive="active">Coupons</button>
+      <button mat-button routerLink="/admin/post-coupon" routerLinkActive="active">Add Coupon</button>
+      <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
+    </ng-container>
+    <!-- Hamburger Menu for Smaller Screens -->
+    <ng-container *ngIf="isSmallScreen">
+      <button mat-icon-button [matMenuTriggerFor]="menuAdmin">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menuAdmin="matMenu">
+        <button mat-menu-item routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</button>
+        <button mat-menu-item routerLink="/admin/analytics" routerLinkActive="active">Analytics</button>
+        <button mat-menu-item routerLink="/admin/category" routerLinkActive="active">Category</button>
+        <button mat-menu-item routerLink="/admin/product" routerLinkActive="active">Product</button>
+        <button mat-menu-item routerLink="/admin/orders" routerLinkActive="active">Orders</button>
+        <button mat-menu-item routerLink="/admin/coupons" routerLinkActive="active">Coupons</button>
+        <button mat-menu-item routerLink="/admin/post-coupon" routerLinkActive="active">Add Coupon</button>
+        <button mat-menu-item routerLinkActive="active" (click)="logout()">Logout</button>
+      </mat-menu>
+    </ng-container>
   </mat-toolbar>
-  </div>
+</div>
 
-  <div *ngIf="isCustomerLoggedIn ">
-    <mat-toolbar color="primary" class="navbar">
-      <span class="navbar-brand">Snakeporium</span>
-      <span class="spacer"></span>
+<div *ngIf="isCustomerLoggedIn">
+  <mat-toolbar color="primary" class="navbar">
+    <span class="navbar-brand">Snakeporium</span>
+    <span class="spacer"></span>
+    <!-- Regular Menu for Larger Screens -->
+    <ng-container *ngIf="!isSmallScreen">
       <button mat-button routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</button>
       <button mat-button routerLink="/customer/cart" routerLinkActive="active">Cart</button>
       <button mat-button routerLink="/customer/orders" routerLinkActive="active">Orders</button>
       <button mat-button routerLink="/customer/wishlist" routerLinkActive="active">Wishlist</button>
       <button mat-button routerLink="/customer/profile" routerLinkActive="active">Profile</button>
-      <button mat-button  routerLinkActive="active" (click)="logout()">Logout</button>
-    </mat-toolbar>
-    </div>
+      <button mat-button routerLinkActive="active" (click)="logout()">Logout</button>
+    </ng-container>
+    <!-- Hamburger Menu for Smaller Screens -->
+    <ng-container *ngIf="isSmallScreen">
+      <button mat-icon-button [matMenuTriggerFor]="menuCustomer">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menuCustomer="matMenu">
+        <button mat-menu-item routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</button>
+        <button mat-menu-item routerLink="/customer/cart" routerLinkActive="active">Cart</button>
+        <button mat-menu-item routerLink="/customer/orders" routerLinkActive="active">Orders</button>
+        <button mat-menu-item routerLink="/customer/wishlist" routerLinkActive="active">Wishlist</button>
+        <button mat-menu-item routerLink="/customer/profile" routerLinkActive="active">Profile</button>
+        <button mat-menu-item routerLinkActive="active" (click)="logout()">Logout</button>
+      </mat-menu>
+    </ng-container>
+  </mat-toolbar>
+</div>
+
 <router-outlet></router-outlet>

@@ -1,3 +1,16 @@
-.navbar{
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: black;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 768px) {
+  .navbar .mat-button {
+    display: none;
+  }
 }
