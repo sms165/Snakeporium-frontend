@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CustomerService } from '../../service/customer.service';
 
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,6 +15,8 @@ export class DashboardComponent {
   allowedFormats: string[] = ['jpeg', 'png', 'gif', 'bmp', 'svg+xml'];
   searchProductForm!: FormGroup;
   loading = false;
+
+
 
   constructor(
     private customerService: CustomerService,
