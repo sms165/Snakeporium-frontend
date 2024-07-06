@@ -1,24 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../service/admin.service';
 
 @Component({
   selector: 'app-analytics',
   templateUrl: './analytics.component.html',
-  styleUrl: './analytics.component.scss'
+  styleUrls: ['./analytics.component.scss']
 })
-export class AnalyticsComponent {
+export class AnalyticsComponent implements OnInit {
+  data: any;
 
-data:any;
+  constructor(private adminService: AdminService) {}
 
-  constructor(
-    private adminService: AdminService
-  ){}
-
-  ngOnInit(){
-    this.adminService.getAnalytics().subscribe(res =>{
-      console.log(res);
-      this.data=res;
-    })
+  ngOnInit(): void {
+    this.fetchAnalytics();
   }
 
+  private fetchAnalytics(): void {
+    this.adminService.getAnalytics().subscribe(
+      (res: any) => {
+        console.log(res);
+        this.data = res;
+      },
+      (error: any) => {
+        console.error('Error fetching analytics:', error);
+        // Handle error as needed
+      }
+    );
+  }
 }

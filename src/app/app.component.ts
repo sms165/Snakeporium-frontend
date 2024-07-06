@@ -22,14 +22,7 @@ export class AppComponent {
       this.isCustomerLoggedIn = UserStorageService.isCustomerLoggedIn();
       this.isAdminLoggedIn = UserStorageService.isAdminLoggedIn();
     })
-    this.appRef.isStable.subscribe((isStable: boolean) => {
-      if (isStable) {
-        console.log('Application is stable');
-        // Perform actions once the application is stable
-      } else {
-        console.log('Application is not yet stable');
-      }
-    });
+
 
   }
 

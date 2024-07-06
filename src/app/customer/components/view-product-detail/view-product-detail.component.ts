@@ -21,6 +21,7 @@ export class ViewProductDetailComponent {
   randomQuestions: string[] = [];
   chatMessages: { content: string; type: 'user' | 'bot' }[] = [];
   newMessage: string = '';
+  predefinedQuestionsAndResponses: { question: string, response: string }[] = [];
 
 
   constructor(
@@ -37,6 +38,7 @@ private activatedRoute : ActivatedRoute
 
   ngOnInit(){
     this.getProductDetailsById();
+    this.getPredefinedQuestionsAndResponses();
     }
 
 
@@ -99,26 +101,42 @@ console.log(this.product.processedImg)
       );
   }
 
-  sendMessage(): void {
-    if (this.newMessage.trim() === '') return;
 
-    this.chatMessages.push({ content: this.newMessage.trim(), type: 'user' });
 
-    // Send user message to backend for processing (if needed)
+  // getPredefinedQuestionsAndResponses(): void {
+  //   this.customerService.getPredefinedQuestionsAndResponses(this.productId).subscribe(
+  //     (data) => {
+  //       this.getPredefinedQuestionsAndResponses = data;
+  //       console.log(data)
+  //       // Optionally, you can process the responses or use them in your chat interface
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching predefined questions and responses:', error);
+  //     }
+  //   );
+  // }
 
-    this.newMessage = ''; // Clear the input field
-  }
+  isFetchingPredefinedData = false; // Flag to indicate data fetching state
 
-  askRandomQuestions(): void {
-    this.customerService.getRandomQuestionsWithProductDetails(this.productId).subscribe(
-      (questions) => {
-        this.randomQuestions = questions;
+getPredefinedQuestionsAndResponses(): void {
+  this.isFetchingPredefinedData = true; // Set flag to true before fetching
+  this.customerService.getPredefinedQuestionsAndResponses(this.productId)
+    .subscribe(
+      (data) => {
+        console.log(data)
+        this.predefinedQuestionsAndResponses = data;
+        this.isFetchingPredefinedData = false; // Set flag to false after successful fetch
       },
       (error) => {
-        console.error('Error fetching random questions:', error);
+        console.error('Error fetching predefined questions and responses:', error);
+        this.isFetchingPredefinedData = false; // Set flag to false after error
       }
     );
-  }
+}
+
+
+
+
 }
 
 

@@ -6,6 +6,7 @@ import { TrackOrderComponent } from './track-order/track-order.component';
 import { ProfileComponent } from './customer/components/profile/profile.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "order", component: TrackOrderComponent},
@@ -16,7 +17,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { UserStorageService } from '../../services/storage/user-storage.service';
+import { CacheService } from './cache.service';
 
-const BASIC_URL = "http://localhost:8080/";
+const BASIC_URL = "https://snakeporium-backend-9fb6a7c60073.herokuapp.com/";
 
 @Injectable({
   providedIn: 'root'
@@ -11,20 +12,34 @@ const BASIC_URL = "http://localhost:8080/";
 export class CustomerService {
 
   constructor(private http: HttpClient,
+    private cacheService: CacheService
 
   ) { }
 
-  getAllProducts(): Observable<any>{
+  getAllProducts(): Observable<any> {
+    const cacheKey = 'allProducts';
+    if (this.cacheService.has(cacheKey)) {
+      return of(this.cacheService.get(cacheKey));
+    }
     return this.http.get(BASIC_URL + 'api/customer/products', {
       headers: this.createAuthorizationHeader(),
-    })
+    }).pipe(
+      tap(data => this.cacheService.set(cacheKey, data))
+    );
   }
 
-  getAllProductsByName(name:any): Observable<any>{
+  getAllProductsByName(name: any): Observable<any> {
+    const cacheKey = `productsByName-${name}`;
+    if (this.cacheService.has(cacheKey)) {
+      return of(this.cacheService.get(cacheKey));
+    }
     return this.http.get(BASIC_URL + `api/customer/search/${name}`, {
       headers: this.createAuthorizationHeader(),
-    })
+    }).pipe(
+      tap(data => this.cacheService.set(cacheKey, data))
+    );
   }
+
 
   addToCart(productId:any): Observable<any>{
     const cartDto ={
@@ -127,9 +142,12 @@ export class CustomerService {
   }
 
   getProfileById(): Observable<any> {
-    const userId = UserStorageService.getUserId(); // Assume this retrieves the userId correctly from local storage
-    const token = UserStorageService.getToken(); // Retrieve the JWT token from local storage
-    console.log("User ID from storage: ", userId); // Log the user ID for debugging
+    // Assume this retrieves the userId correctly from local storage
+    const userId = UserStorageService.getUserId();
+    // Retrieve the JWT token from local storage
+    const token = UserStorageService.getToken();
+    // Log the user ID for debugging
+    console.log("User ID from storage: ", userId);
     console.log("JWT Token: ", token);
 
     return this.http.get(BASIC_URL + `api/customer/profile?userId=${userId}`,  {
@@ -158,7 +176,11 @@ export class CustomerService {
     });
   }
 
-
+  getPredefinedQuestionsAndResponses(productId: number): Observable<any> {
+    return this.http.get(BASIC_URL + `api/customer/details/${productId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
 
 
   private createAuthorizationHeader(): HttpHeaders{

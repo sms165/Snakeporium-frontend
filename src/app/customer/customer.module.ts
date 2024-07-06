@@ -17,6 +17,7 @@ import { ViewWishlistComponent } from './components/view-wishlist/view-wishlist.
 import { ProfileComponent } from './components/profile/profile.component';
 import { UpdateProfileComponent } from './components/update-profile/update-profile.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
     ViewWishlistComponent,
     ProfileComponent,
     UpdateProfileComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,

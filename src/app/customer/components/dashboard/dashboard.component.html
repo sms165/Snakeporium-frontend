@@ -1,49 +1,45 @@
-<form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()" >
+<!-- dashboard.component.html -->
+<form [formGroup]="searchProductForm" class="search-form" (submit)="submitForm()">
   <mat-form-field appearance="outline" class="search-input">
     <mat-label>Search</mat-label>
     <input matInput formControlName="title">
     <button mat-button matSuffix color="primary" [disabled]="searchProductForm.invalid">
-    <mat-icon >search</mat-icon>
+      <mat-icon>search</mat-icon>
     </button>
   </mat-form-field>
-  </form>
+</form>
 
+<div *ngIf="loading" class="loader-container">
+  <app-loader></app-loader>
+</div>
 
-<div class="product-list">
-
-
-  <mat-card class="product-card" *ngFor="let product of products" >
-     <div class="link link-text" routerLink="/customer/product/{{product.id}}">
+<div *ngIf="!loading" class="product-list">
+  <mat-card class="product-card" *ngFor="let product of products">
+    <div class="link link-text" routerLink="/customer/product/{{product.id}}">
       <div class="product-image">
-      <img [src]="product.processedImg" alt="product-image">
+        <img [src]="product.processedImg" alt="product-image">
+      </div>
+      <div class="product-details">
+        <h2 class="product-name" routerLink="/customer/product/{{product.id}}">{{product.name}}</h2>
+        <p class="product-latin">{{product.latin}}</p>
+        <p routerLink="/customer/product/{{product.id}}">Click for more details</p>
+        <mat-divider></mat-divider>
+        <div class="product-info">
+          <div class="info-row">
+            <span class="info-label">Price: </span>
+            <span class="info-value">${{product.price}}</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">Category: </span>
+            <span class="info-value">{{product.categoryName}}</span>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
     </div>
-    <div class="product-details">
-
-      <h2 class="product-name " routerLink="/customer/product/{{product.id}}" >{{product.name}}</h2>
-      <p class="product-latin">{{product.latin}}</p>
-<p  routerLink="/customer/product/{{product.id}}">Click for more details</p>
-
-      <mat-divider></mat-divider>
-      <div class="product-info">
-        <div class="info-row">
-          <span class="info-label">Price: </span>
-          <span class="info-value">${{product.price}}</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label">Category: </span>
-          <span class="info-value">{{product.categoryName}}</span>
-        </div>
-      </div>
-      <mat-divider></mat-divider>
-      </div></div>
-      <div class="actions">
-        <button mat-raised-button color="primary" class="update-button" (click)="addToCart(product.id)">Add to Cart</button>
-        <!-- <button mat-raised-button color="primary" class="update-button" [routerLink]="'/admin/faq/' + product.id">FAQ</button>
-        <button mat-raised-button color="accent" class="update-button" [routerLink]="'/admin/product/' + product.id">Update</button>
-        <button mat-raised-button color="warm" class="delete-button" (click)="deleteProduct(product.id)">Delete</button> -->
-      </div>
-
-
+    <div class="actions">
+      <button mat-raised-button color="primary" class="update-button" (click)="addToCart(product.id)">Add to Cart</button>
+    </div>
   </mat-card>
 </div>
 

@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const BASIC_URL = "http://localhost:8080/";
+const BASIC_URL = "https://snakeporium-backend-9fb6a7c60073.herokuapp.com/";
 
 @Injectable({
   providedIn: 'root'

@@ -36,12 +36,14 @@ export class ProfileComponent implements OnInit {
   updateProfile(): void {
     const dialogRef = this.dialog.open(UpdateProfileComponent, {
       width: '400px',
-      data: { userProfile: this.userProfile } // Pass userProfile data to the dialog
+      data: { userProfile: this.userProfile }
+      // Pass userProfile data to the dialog
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // If dialog returns true (meaning profile was updated), reload the profile
+        // If dialog returns true (meaning profile was updated),
+        // reload the profile
         this.getUserProfile();
       }
     });
@@ -50,14 +52,14 @@ export class ProfileComponent implements OnInit {
   updatePassword(): void {console.log("hello", this.userProfile);
     const dialogRef = this.dialog.open(UpdatePasswordComponent, {
       width: '400px',
-
-
-      data: { userProfile: this.userProfile } // Pass userProfile data to the dialog
+      data: { userProfile: this.userProfile }
+      // Pass userProfile data to the dialog
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // If dialog returns true (meaning profile was updated), reload the profile
+        // If dialog returns true (meaning profile was updated),
+        //  reload the profile
         this.getUserProfile();
       }
     });

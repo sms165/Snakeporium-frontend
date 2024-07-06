@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'product/:productId', component: ViewProductDetailComponent },
   { path: 'wishlist', component: ViewWishlistComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'profile/password', component:UpdatePasswordComponent}
+  { path: 'profile/password', component:UpdatePasswordComponent},
+  {path: 'details/:productId', component: ViewProductDetailComponent},
 
 ];
 

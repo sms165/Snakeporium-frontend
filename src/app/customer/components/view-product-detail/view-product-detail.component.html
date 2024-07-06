@@ -7,13 +7,13 @@
     <div class="product-details">
       <h2>{{ product.name }}</h2>
       <p>{{product.latin}}</p>
-    <!-- Random Questions Section -->
-<h1 class="section-heading" *ngIf="randomQuestions.length > 0">Random Questions</h1>
-<div *ngIf="randomQuestions.length > 0" class="random-questions center-container">
-  <ul>
-    <li *ngFor="let question of randomQuestions">{{ question }}</li>
-  </ul>
+      <h2  *ngIf="predefinedQuestionsAndResponses.length > 0">AI Generated Details</h2>
+<div *ngIf="isFetchingPredefinedData">
+  <p>Loading AI Generated Details...</p>
 </div>
+<div *ngIf="predefinedQuestionsAndResponses.length > 0" class="predefined-questions center-container">
+  <pre>{{ predefinedQuestionsAndResponses }}</pre>  </div>
+
       <p class="description">{{ product.description }}</p>
       <p class="price">Price: ${{ product.price }}</p>
       <p class="category">Category: {{ product.categoryName }}</p>
@@ -21,6 +21,8 @@
     </div>
   </div>
 </div>
+
+
 
 <!-- Customer Reviews -->
 <h1 class="section-heading" *ngIf="reviews.length > 0">Customer Reviews</h1>
