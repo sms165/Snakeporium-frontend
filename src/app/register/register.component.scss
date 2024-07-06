@@ -2,7 +2,7 @@
 
 .register-card {
   margin-top: 15vh;
-  width: 30%;
+  width: max-content;
   max-width: 20vw; /* Maximum width of the card */
   padding: 1vw; /* Inner padding for the card */
   border-radius: 10px; /* Rounded corners */
@@ -31,6 +31,7 @@
 /* Responsive adjustments */
 @media (max-width: 600px) {
   .register-card {
-    max-width: 90%; /* Adjust for smaller screens */
+    max-width: 70vw; /* Adjust for smaller screens */
+    padding: 3vw;
   }
 }

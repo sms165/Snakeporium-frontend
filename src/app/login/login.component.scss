@@ -14,7 +14,8 @@
 .login-card {
   margin-top: 15vh;
   width: 30%;
-  max-width: 20vw; /* Maximum width of the card */
+  width: max-content;
+  max-width: 30vw; /* Maximum width of the card */
   padding: 1vw; /* Inner padding for the card */
   border-radius: 10px; /* Rounded corners */
   background-color: rgba(255, 255, 255, 0.3); /* White background with transparency */
@@ -41,8 +42,9 @@
 
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 860px) {
   .login-card {
-    max-width: 90%; /* Adjust for smaller screens */
+    max-width: 70vw; /* Adjust for smaller screens */
+    padding: 3vw;
   }
 }
