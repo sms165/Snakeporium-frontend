@@ -2,7 +2,7 @@
 
 .track-card {
   margin-top: 10vh;
-  width: 30%;
+  width: fit-content;
   max-width: 20vw; /* Maximum width of the card */
   padding: 1vw; /* Inner padding for the card */
   border-radius: 10px; /* Rounded corners */
@@ -39,9 +39,11 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 600px) {
+@media (max-width: 860px) {
   .track-card {
-    max-width: 90%; /* Adjust for smaller screens */
+    width: fit-content;
+    max-width: 70vw; /* Adjust for smaller screens */
+    padding: 3vw;
   }
 }
 
