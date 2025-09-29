@@ -19,6 +19,8 @@ import { MatTable, MatTableModule } from '@angular/material/table';
 import { TrackOrderComponent } from './track-order/track-order.component';
 import { ProfileComponent } from './customer/components/profile/profile.component';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './services/auth/interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { ProfileComponent } from './customer/components/profile/profile.componen
   providers: [
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideHttpClient() // Use the new provideHttpClient function
+    provideHttpClient(), // Use the new provideHttpClient function
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+
   ],
   bootstrap: [AppComponent]
 })

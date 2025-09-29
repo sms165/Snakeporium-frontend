@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const BASIC_URL = "https://snakeporium-backend-9fb6a7c60073.herokuapp.com/";
+const BASIC_URL = "https://snakeporium-backend-9fb6a7c60073.herokuapp.com";
 
 @Injectable({
   providedIn: 'root'
@@ -33,29 +33,32 @@ export class AuthService {
 
 
 
-  login(username: string, password: string): any {
+  login(username: string, password: string): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
     const body = { username, password };
-    console.log(headers);
 
-    return this.http.post(BASIC_URL + 'authenticate', body, { headers, observe: 'response' }).pipe(
+    return this.http.post(`${BASIC_URL}authenticate`, body, { headers, observe: 'response' }).pipe(
       map((res) => {
-        console.log('Response:', res);
         const token = res.headers.get('authorization')?.substring(7);
         const user = res.body;
+
         if (token && user) {
+          // Save using both methods (choose one approach long-term)
           this.userStorageService.saveToken(token);
           this.userStorageService.saveUser(user);
+          localStorage.setItem('authToken', token);
+          localStorage.setItem('currentUser', JSON.stringify(user));
           return true;
         }
         return false;
       }),
       catchError(error => {
-        console.error('Error:', error); // Log the error object
-        return throwError(error); // Re-throw the error to propagate it
+        console.error('Login error:', error);
+        return throwError(() => new Error('Login failed. Please check your credentials.'));
       })
     );
   }
+
 
   getOrderByTrackingId(trackingId: number):Observable<any>{
     return this.http.get(BASIC_URL + `order/${trackingId}`);
