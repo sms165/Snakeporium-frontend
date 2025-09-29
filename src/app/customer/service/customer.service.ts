@@ -4,7 +4,7 @@ import { Observable, of, tap } from 'rxjs';
 import { UserStorageService } from '../../services/storage/user-storage.service';
 import { CacheService } from './cache.service';
 
-const BASIC_URL = "https://snakeporium-backend-9fb6a7c60073.herokuapp.com/";
+const BASIC_URL = "https://snakeporium-backend-1.onrender.com/";
 
 @Injectable({
   providedIn: 'root'

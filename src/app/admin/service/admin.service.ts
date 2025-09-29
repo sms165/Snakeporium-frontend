@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserStorageService } from '../../services/storage/user-storage.service';
 
-const BASIC_URL = "https://snakeporium-backend-9fb6a7c60073.herokuapp.com/";
+const BASIC_URL = "https://snakeporium-backend-1.onrender.com/";
 
 @Injectable({
   providedIn: 'root'
